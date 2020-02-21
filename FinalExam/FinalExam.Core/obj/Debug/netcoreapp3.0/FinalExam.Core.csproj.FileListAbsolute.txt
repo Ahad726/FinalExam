@@ -1,0 +1,5 @@
+C:\Users\ATM\Desktop\FinalExam\FinalExam\FinalExam.Core\bin\Debug\netcoreapp3.0\FinalExam.Core.deps.json
+C:\Users\ATM\Desktop\FinalExam\FinalExam\FinalExam.Core\bin\Debug\netcoreapp3.0\FinalExam.Core.dll
+C:\Users\ATM\Desktop\FinalExam\FinalExam\FinalExam.Core\obj\Debug\netcoreapp3.0\FinalExam.Core.csprojAssemblyReference.cache
+C:\Users\ATM\Desktop\FinalExam\FinalExam\FinalExam.Core\obj\Debug\netcoreapp3.0\FinalExam.Core.AssemblyInfoInputs.cache
+C:\Users\ATM\Desktop\FinalExam\FinalExam\FinalExam.Core\obj\Debug\netcoreapp3.0\FinalExam.Core.AssemblyInfo.cs

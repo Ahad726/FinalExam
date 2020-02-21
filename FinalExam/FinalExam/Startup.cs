@@ -13,11 +13,15 @@ using Microsoft.EntityFrameworkCore;
 using FinalExam.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using FinalExam.Core;
 
 namespace FinalExam
 {
     public class Startup
     {
+        public static IContainer AutofacContainer;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,7 +30,7 @@ namespace FinalExam
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -42,6 +46,8 @@ namespace FinalExam
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationAssemblyName)));
 
+            services.AddDbContext<FileContext>(options =>
+                options.UseSqlServer(connectionString, b => b.MigrationsAssembly(migrationAssemblyName)));
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
@@ -50,6 +56,12 @@ namespace FinalExam
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddEntityFrameworkSqlServer();
+
+            var builder = new ContainerBuilder();
+            builder.Populate(services);
+            builder.RegisterModule(new CoreModule(Configuration, connectionStringName, migrationAssemblyName));
+            AutofacContainer = builder.Build();
+            return new AutofacServiceProvider(AutofacContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
