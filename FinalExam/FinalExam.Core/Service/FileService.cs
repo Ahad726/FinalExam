@@ -39,5 +39,10 @@ namespace FinalExam.Core
                 pageSize,
                 true);
         }
+
+        public string GetFIleName()
+        {
+            return _unitOfWork.FileRepositroy.GetFileName();
+        }
     }
 }

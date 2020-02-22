@@ -13,5 +13,7 @@ namespace FinalExam.Core.Service
            string searchText,
            out int total,
            out int totalFiltered);
+
+        string GetFIleName();
     }
 }

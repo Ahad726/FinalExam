@@ -71,5 +71,12 @@ namespace FinalExam.Core
                 return result?.ToList();
         }
 
+        public string GetFileName()
+        {
+            var filename = Files.Where(s => s.Status == "Pending").Select(x => x.FileName).ToString();
+
+            return filename;
+        }
+
     }
 }

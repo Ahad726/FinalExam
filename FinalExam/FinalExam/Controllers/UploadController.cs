@@ -59,7 +59,8 @@ namespace FinalExam.Controllers
             var model = new FileUpdateModel();
             model.AddNewFile(newFileName);
 
-            return View();
+           // return View();
+            return RedirectToAction("Details");
 
         }
     

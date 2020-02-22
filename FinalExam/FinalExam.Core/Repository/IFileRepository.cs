@@ -16,5 +16,6 @@ namespace FinalExam.Core.Repository
            Expression<Func<FileEntity, bool>> filter = null,
            Func<IQueryable<FileEntity>, IOrderedQueryable<FileEntity>> orderBy = null,
            string includeProperties = "", int pageindex = 1, int pageSize = 10, bool isTrackingOff = false);
+        string GetFileName();
     }
 }
