@@ -14,7 +14,6 @@ namespace FinalExam.Controllers
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();

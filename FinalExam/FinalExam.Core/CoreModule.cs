@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using FinalExam.Core.Context;
+using FinalExam.Core.Repository;
+using FinalExam.Core.Service;
+using FinalExam.Core.UnitWork;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -32,6 +35,16 @@ namespace FinalExam.Core
                    .WithParameter("connectionString", _connectionString)
                    .WithParameter("migrationAssemblyName", _migrationAssemblyName)
                    .InstancePerLifetimeScope();
+
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>()
+                   .WithParameter("connectionString", _connectionString)
+                   .WithParameter("migrationAssemblyName", _migrationAssemblyName)
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<FileRepository>().As<IFileRepository>()
+                .InstancePerLifetimeScope();
+            builder.RegisterType<FileService>().As<IFileService>()
+                .InstancePerLifetimeScope();
 
             base.Load(builder);
 

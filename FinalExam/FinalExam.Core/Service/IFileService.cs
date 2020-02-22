@@ -4,7 +4,8 @@ using System.Text;
 
 namespace FinalExam.Core.Service
 {
-    public class IFileService
+    public interface IFileService
     {
+        void AddFile(FileEntity fileEntity);
     }
 }

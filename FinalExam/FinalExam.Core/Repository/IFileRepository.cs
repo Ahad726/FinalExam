@@ -4,8 +4,9 @@ using System.Text;
 
 namespace FinalExam.Core.Repository
 {
-    public class IFileRepository
+    public interface IFileRepository
     {
-
+        void Add(FileEntity file);
+        void Save();
     }
 }
