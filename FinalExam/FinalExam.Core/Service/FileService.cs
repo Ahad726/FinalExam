@@ -21,5 +21,23 @@ namespace FinalExam.Core
             _unitOfWork.FileRepositroy.Add(fileEntity);
             _unitOfWork.FileRepositroy.Save();
         }
+
+        public IEnumerable<FileEntity> GetFiles(
+           int pageIndex,
+           int pageSize,
+           string searchText,
+           out int total,
+           out int totalFiltered)
+        {
+            return _unitOfWork.FileRepositroy.Get(
+                out total,
+                out totalFiltered,
+                x => x.FileName.Contains(searchText),
+                null,
+                "",
+                pageIndex,
+                pageSize,
+                true);
+        }
     }
 }

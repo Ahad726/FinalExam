@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using FinalExam.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalExam.Controllers
 {
+    //[Authorize]
     public class UploadController : Controller
     {
+        ///[Authorize(Policy = "InternalOfficials")]
         public IActionResult Index()
         {
             return View();
         }
 
-
-        [HttpPost]
+        [HttpPost]        
         public async Task<IActionResult> Index(IFormFile formfile)
         {
             var randomName = Path.GetRandomFileName().Replace(".", "");
@@ -60,5 +62,21 @@ namespace FinalExam.Controllers
             return View();
 
         }
+    
+        public IActionResult GetAllFiles()
+        {
+            var tableModel = new DataTablesAjaxRequestModel(Request);
+            var model = new FileViewModel();
+            var data = model.GetFile(tableModel);
+            return Json(data);
+        }
+
+        public IActionResult Details()
+        {
+            var model = new FileViewModel();
+            return View(model);
+        }
+
+
     }
 }

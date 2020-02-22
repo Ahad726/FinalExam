@@ -6,6 +6,14 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\Account\Login.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\Account\Login.cshtml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
@@ -26,6 +34,14 @@
 
   <ItemGroup>
     <Folder Include="upload\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\plugins\datatables-bs4\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\plugins\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\plugins\datatables\jquery.dataTables.js" />
+    <None Include="wwwroot\plugins\datatables\jquery.dataTables.min.js" />
   </ItemGroup>
 
 </Project>
